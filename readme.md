@@ -1,51 +1,63 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Stisla Laravel
+Stisla is the most-awesome admin panel I've seen so far. As I love this template very much, I have implemented Stisla in a fresh Laravel 5.8 app. Simply clone this repo and start building your next Laravel project on top of the awesome Stisla. This project makes a very little and basic use of VueJS and compiled JS is already bundled with the project. If you want to make it more dynamic, you can update the Vue components or add your own.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Installation
+Clone the repo:
+```shell
+git clone https://github.com/rehmatworks/stisla-laravel.git
+```
 
-## About Laravel
+Install composer packages:
+```shell
+composer update
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Copy and rename .env.example to .env, update the environmental variables and set an app key:
+```shell
+php artisan key:generate
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+After that, run all migrations and seed the database:
+```shell
+php artisan migrate
+```
+```shell
+php artisan db:seed
+```
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Or if your database is fresh and you haven't done any work yet, then it's safe to call the commands in a single line:
+```shell
+php artisan migrate:refresh --seed
+```
 
-## Learning Laravel
+Note that seeding the database is compulsory as it will create the necessary roles and permissions for the user CRUD provided by the project.
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+Visit <div style="display: inline">http://yoursite.com/login</div> to sign in using below credentials:
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+### Demo
+URL: https://stisla.rehmat.works
 
-## Laravel Sponsors
+#### Demo Admin Login
+*  Email: admin@example.com
+*  Password: 1234
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+#### Demo Editor Login
+*  Email: editor@example.com
+*  Password: 1234
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+#### Demo User Login
+*  Email: user@example.com
+*  Password: 1234
 
-## Contributing
+P.S.: Password modification and user deletion is disabled in demo mode.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+This project comes with a user CRUD and makes the use of [Spatie Roles and Permissions](https://github.com/spatie/laravel-permission) at a very basic level in order to give restricted access to the three roles provided above. You can move forward with the same logic to achieve more complex goals.
 
-## Security Vulnerabilities
+### Credits:
+*   [Laravel](https://github.com/laravel/laravel)
+*   [Stisla Bootstrap 4 Admin Panel Template](https://github.com/stisla/stisla)
+*   [Spatie Laravel Roles and Permissions](https://github.com/spatie/laravel-permission)
+*   [vue-ios-alertview](https://github.com/Wyntau/vue-ios-alertview)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+### Contribution:
+Contribution is welcomed and highly appreciated. Fork the repo, make your updates and initiate a pull request. I'll approve all pull requests as long as they are constructive and follow the Laravel standard practices.
