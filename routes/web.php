@@ -1,6 +1,7 @@
 <?php
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('/single-listing', 'HomeController@listing');
 
 /*Route::get('/', function() {
     return redirect(route('admin.dashboard'));
@@ -12,7 +13,7 @@ Route::get('home', function() {
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
     Route::get('dashboard', 'DashboardController')->name('dashboard');
-
+Route::get('packages', 'PackagesController@index')->name('packages');
     Route::get('users/roles', 'UserController@roles')->name('users.roles');
     Route::resource('users', 'UserController', [
         'names' => [
