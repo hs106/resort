@@ -2,12 +2,9 @@
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/single-listing', 'HomeController@listing');
-<<<<<<< HEAD
 Route::get('/dynamic.js', function () {
     return view('admin.js.dynamic'); 
 });
-=======
->>>>>>> fd6a0837315c823decf65d7324ac9be5336baeff
 
 /*Route::get('/', function() {
     return redirect(route('admin.dashboard'));
@@ -19,15 +16,12 @@ Route::get('home', function() {
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
     Route::get('dashboard', 'DashboardController')->name('dashboard');
-<<<<<<< HEAD
     Route::get('packages', 'PackagesController@index')->name('packages');
     Route::get('add-packages', 'PackagesController@addPackages')->name('add-packages');
     Route::post('save-package', 'PackagesController@savePackage')->name('save-package');
     Route::post('delete-package', 'PackagesController@deletePackage')->name('delete-package');
     Route::get('edit-package/{id}', 'PackagesController@editPackage')->name('edit-package');
     Route::post('view-package', 'PackagesController@viewPackage')->name('view-package');
-=======
->>>>>>> fd6a0837315c823decf65d7324ac9be5336baeff
     Route::get('users/roles', 'UserController@roles')->name('users.roles');
     Route::resource('users', 'UserController', [
         'names' => [
