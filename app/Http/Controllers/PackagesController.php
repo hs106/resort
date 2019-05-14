@@ -33,11 +33,11 @@ class PackagesController extends Controller
 	        	}
 	        	$check = $this->update($data);
 	        } else {
-	        	$check = $this->create($data);
 	        	$data['description'] = $this->upload_description_images($data['description']);
 	        	if ($request->featured_image && $request->hasFile('featured_image')) {
 	        		$data['featured_image'] = $this->upload_image ($data['featured_image']);
 	        	}
+	        	$check = $this->create($data);
 	        }
 	        if($check){ 
 	        	$arr = array('msg' => 'Your package has been updated successfully!', 'status' => true);
@@ -58,7 +58,7 @@ class PackagesController extends Controller
 		$package->location = $data['location'];
 		$package->orignal_price = $data['orignal_price'];
 		$package->price = $data['price'];
-		$package->percent_off = $data['sub_title'];
+		$package->percent_off = $data['percent_off'];
 		$package->sales_end_time = $data['sales_end_time'];
 		$package->video_embed_code = $data['video_embed_code'];
 		$package->description = $data['description'];
@@ -79,7 +79,7 @@ class PackagesController extends Controller
 		$package->location = $data['location'];
 		$package->orignal_price = $data['orignal_price'];
 		$package->price = $data['price'];
-		$package->percent_off = $data['sub_title'];
+		$package->percent_off = $data['percent_off'];
 		$package->sales_end_time = $data['sales_end_time'];
 		$package->video_embed_code = $data['video_embed_code'];
 		$package->description = $data['description'];
@@ -88,22 +88,25 @@ class PackagesController extends Controller
 	}
 
 	public function upload_description_images ($detail) {
-		    	$dom = new \DomDocument();
-		       $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
-		       $images = $dom->getElementsByTagName('img');
-		       foreach($images as $k => $img) {
-				$data = $img->getAttribute('src');
-				list($type, $data) = explode(';', $data);
-				list(, $data)      = explode(',', $data);
-				$data = base64_decode($data);
-				$image_name= "/upload/" . time().$k.'.png';
-				$path = public_path() . $image_name;
-				file_put_contents($path, $data);
-				$img->removeAttribute('src');
-				$img->setAttribute('src', $image_name);
-		       	}
-		       $detail = $dom->saveHTML();
-		       return $detail;
+		$document = new \DOMDocument('1.0', 'UTF-8');
+		$internalErrors = libxml_use_internal_errors(true);
+		$document->loadHTML($detail);
+		libxml_use_internal_errors($internalErrors);
+		
+	       	$images = $document->getElementsByTagName('img');
+	       	foreach($images as $k => $img) {
+			$data = $img->getAttribute('src');
+			list($type, $data) = explode(';', $data);
+			list(, $data)      = explode(',', $data);
+			$data = base64_decode($data);
+			$image_name= "/upload/" . time().$k.'.png';
+			$path = public_path() . $image_name;
+			file_put_contents($path, $data);
+			$img->removeAttribute('src');
+			$img->setAttribute('src', $image_name);
+	       	}
+	       $detail = $document->saveHTML();
+	       return $detail;
 	}
 
 	public function upload_image () {

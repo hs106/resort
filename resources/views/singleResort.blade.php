@@ -4,9 +4,9 @@
 	<div class="container description-star-sec">
 		<div class="row title-row">
 			<div class="col-md-12">
-				<p class="title">Exploria Express at Summer Bay</p>
-				<p class="location">florida, USA</p>
-				<p class="rating">*****</p>
+				<p class="title">{{$package->title}}</p>
+				<p class="location">{{$package->location}}</p>
+				<!-- <p class="rating">*****</p> -->
 			</div>
 		</div>
 		<div class="row booking-row">
@@ -15,7 +15,7 @@
 					<img src="{{  asset('/img/flash-sale.jpg') }}" class="img-top-listing">
 				</div>
 				<div class=" item-middle-row">
-					<img src="{{  asset('/img/main.jpg') }}" class="img-middle-listing">
+					<img src="{{  asset('/upload/'.$package->featured_image) }}" class="img-middle-listing">
 				</div>
 				<div class="item-bottom-row">
 					<div class="details-box">
@@ -23,8 +23,8 @@
 						<p class="hotel-name"><b>Exploria Express</b></p>
 						<p class="resort-name">at the <b>Summer Bay Resort</b></p>
 						<p class="tour-detail">Purchase <b>TODAY</b> and Receive a <b>4-Night</b> Complimentary Carnival Cruise</p>
-						<p class="retail-value">Retail Value <span class="original-price">$1,582</span></p>
-						<p class="today-value">Today's Sale Price <span class="today-price">$99</span> Per Family </p>
+						<p class="retail-value">Retail Value <span class="original-price">${{$package->orignal_price}}</span></p>
+						<p class="today-value">Today's Sale Price <span class="today-price">${{$package->price}}</span> Per Family </p>
 						<button class="booking-button" data-toggle="modal" data-target="#dateModalCenter"><span class="fa fa-calendar-check-o"></span> Get Started</button>
 						<p class="today-only-timer">today only sale ends in <span class="today-sale-timer">timer</span></p>
 						<p class="extra-text"><b>PER ROOM</b> Price For Entire Stay - Not Per Person, Not Per Night</p>
@@ -57,31 +57,23 @@
 </section>
 <section class="video-box">
 	<div class="video-container container">
-		<iframe width="420" height="315" src="https://www.youtube.com/embed/YC8MKshn2f8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+		<!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/YC8MKshn2f8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> -->
+		@php 
+        	$embed = html_entity_decode($package->video_embed_code);
+        	echo $embed;
+        @endphp
 	</div>
 </section>
-<section class="gallery-sec">
+<section class="gallery-sec description-section">
 	<div class="container">
 		<div class="row">
-			<p class="title-hotel">EXPLORIA EXPRESS AT SUMMER BAY RESORT</p>
-			<div class="gallery-image-box">
-				<img src="{{asset('/img/overview-1.jpg')}}">
-				<p class="img-desc">The Exploria Express sits in one of Orlando's most premier resort, the Summer Bay, located in the heart of the greatest family-fun city in the world.</p>
-			</div>
+			@php 
+        		echo $package->description
+        	@endphp
 		</div>
 	</div>
 </section>
-<section class="city-gallery-sec gallery-sec">
-	<div class="container">
-		<div class="row">
-			<p class="title-hotel">ORLANDO CITY</p>
-			<div class="gallery-image-box">
-				<img src="{{asset('/img/overview-1.jpg')}}">
-				<p class="img-desc">The Exploria Express sits in one of Orlando's most premier resort, the Summer Bay, located in the heart of the greatest family-fun city in the world.</p>
-			</div>
-		</div>
-	</div>
-</section>
+
 <section class="cruise-gallery-sec gallery-sec">
 	<div class="container">
 		<div class="row">
@@ -138,8 +130,8 @@
 				</ul>
 			</div>
 			<div class="reservation-box-fascility">
-				<p class="retail-value">Retail Value <span class="original-price">$1,582</span></p>
-				<p class="today-value">Today's Sale Price <span class="today-price">$99</span> Per Family </p>
+				<p class="retail-value">Retail Value <span class="original-price">${{$package->orignal_price}}</span></p>
+				<p class="today-value">Today's Sale Price <span class="today-price">${{$package->price}}</span> Per Family </p>
 				<button class="booking-button flash-sale-btn" data-toggle="modal" data-target="#dateModalCenter"><span class="fa fa-calendar-check-o"></span> Get Started</button>
 			</div>
 		</div>
@@ -167,13 +159,13 @@
 				<div class="col-md-12 date-select-mod">
 					<p class="date-select-title">Yes i have travel dates</p>
 					<p class="date-select-desc">check availabilty And</p>
-					<p class="discount-date-select-mod">save up to 74%</p>
-					<a href="#" class="button button-date-mod booking-button"><span class="fa fa-calendar-check-o"></span> SELECT DATES</a>
+					<p class="discount-date-select-mod">save up to {{$package->percent_off}}%</p>
+					<a href="{{route('booking')}}" class="button button-date-mod booking-button"><span class="fa fa-calendar-check-o"></span> SELECT DATES</a>
 				</div>
 				<div class="col-md-12 date-select-mod blue">
 					<p class="date-select-title">no i don't have travel dates</p>
 					<p class="date-select-desc">buy this package now for only</p>
-					<p class="discount-date-select-mod">$499</p>
+					<p class="discount-date-select-mod">${{$package->price}}</p>
 					<a href="#lockpriceModalCenter" data-toggle="modal" data-target="#lockpriceModalCenter" class="button button-date-mod booking-button">LOCK IN THE<br>LOW PRICE</a>
 				</div>
 			</div>

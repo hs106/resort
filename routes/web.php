@@ -1,7 +1,8 @@
 <?php
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-Route::get('/single-listing', 'HomeController@listing');
+Route::get('resort/{slug}', 'HomeController@resotPreview');
+Route::get('booking', 'HomeController@booking')->name('booking');
 Route::get('/dynamic.js', function () {
     return view('admin.js.dynamic'); 
 });

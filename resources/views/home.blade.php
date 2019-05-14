@@ -17,28 +17,30 @@
     <div class="package-box">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="single-package">
-                        <figure>
-                            <img width="656" height="437" src="https://www.resortdaddy.com/wp-content/uploads/2019/01/Can.jpg" class="img-responsive" alt="">
-                        </figure>
-                        <h3>CANCUN, MEXICO</h3>
-                        <div class="pack_desc">
-                            <p>4-Night All-Inclusive Stay for 2 Adults & 2 Children in a Luxury Suite.</p>
+                @foreach ($packages as $row)
+                        <div class="col-md-4">
+                            <div class="single-package">
+                                <figure>
+                                    <img width="656" height="437" src="{{asset('upload/'.$row->featured_image)}}" class="img-responsive" alt="">
+                                </figure>
+                                <h3>{{$row->location}}</h3>
+                                <div class="pack_desc">
+                                    <p>{{$row->sub_title}}</p>
+                                </div>
+                                <div class="pack_price">
+                                    <p>Original Price <strike>${{$row->orignal_price}}</strike></p>
+                                    <h2>Today’s Price ${{$row->price}}*</h2>
+                                </div>
+                                <div class="pack_btn">
+                                    <a href="{{url('resort/'.$row->slug)}}">VIEW THIS OFFER NOW!</a>
+                                </div>
+                                <div class="pack_terms">
+                                    <p>*Resort Preview Rate</p>
+                                    <p>*Taxes & Resort Fees Not Included</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="pack_price">
-                            <p>Original Price <strike>$1662.50</strike></p>
-                            <h2>Today’s Price $499*</h2>
-                        </div>
-                        <div class="pack_btn">
-                            <a href="https://save.resortdaddy.com/cancun/villa-resort?affid1=">VIEW THIS OFFER NOW!</a>
-                        </div>
-                        <div class="pack_terms">
-                            <p>*Resort Preview Rate</p>
-                            <p>*Taxes & Resort Fees Not Included</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach     
             </div>
         </div>
     </div>
