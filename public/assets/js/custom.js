@@ -6,3 +6,18 @@
  */
 
 "use strict";
+
+$(function(){
+	$('#demoInput4').fileInput({
+        iconClass: 'mdi mdi-fw mdi-upload'
+    });
+    if($(".datetimepicker").length) {
+      $('.datetimepicker').daterangepicker({
+        locale: {format: 'YYYY-MM-DD hh:mm'},
+        singleDatePicker: true,
+        timePicker: true,
+        timePicker24Hour: true,
+      });
+    }
+    $('#packages-table').DataTable();
+});

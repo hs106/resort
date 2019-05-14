@@ -12,8 +12,17 @@
   <!-- CSS Libraries -->
 
   <!-- Template CSS -->
+  <link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/tower-file-input.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/summernote.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/iziToast.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/select.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
+  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 </head>
 
 <body>
@@ -41,8 +50,19 @@
   <script src="{{ asset('js/app.js') }}?{{ uniqid() }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="{{ asset('js/tower-file-input.js') }}"></script>
+  <script src="{{ asset('js/daterangepicker.js') }}"></script>
+  <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+  <script src="{{ asset('js/summernote-bs4.js') }}"></script>
+  <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+  <script src="{{ asset('js/iziToast.min.js') }}"></script>
+  <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+  <script src="{{ asset('js/datatables.min.js') }}"></script>
+  <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('js/dataTables.select.min.js') }}"></script>
   <script src="{{ asset('assets/js/stisla.js') }}"></script>
   <script src="{{ asset('assets/js/scripts.js') }}"></script>
+  <script src="{{ asset('assets/js/custom.js') }}"></script>
   @yield('scripts')
 </body>
 </html>
