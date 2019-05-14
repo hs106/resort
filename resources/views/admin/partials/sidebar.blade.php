@@ -12,6 +12,5 @@
       <li class="menu-header">Users</li>
       <li class="{{ Request::route()->getName() == 'admin.users' ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.users') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
       @endif
-       
     </ul>
 </aside>
