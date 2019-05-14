@@ -297,3 +297,9 @@ a.button.button-date-mod {
     color: white;
     padding: 10px;
 }
+div#dateModalCenter .modal-content {
+    background: #ff9a02;
+}
+div#lockpriceModalCenter .modal-content {
+    background: #080629;
+}
