@@ -1,0 +1,299 @@
+p{
+    font-size: 20px;
+}
+button:hover, a.btn:hover {
+    box-shadow: inset 0 2px 2px 0 rgba(255,255,255,0.22), 0 233px 233px 0 rgba(255,255,255,0.12) inset;   
+}
+.right-header.col-md-6 {
+    display: flex;
+    /* align-items: end; */
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.right-header.col-md-6 a {
+    float: right;
+    font-size: 20px;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    color: #fe8a20;
+    font-weight: 700;
+    transition: 0.5s;
+}
+.right-header.col-md-6 a:hover {
+    box-shadow: 0px 0px 14px 3px #fe8a20;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.center-sec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+section.section-gateway .fa {
+    margin-right: 10px;
+}
+.detail-box {
+    font-size: 26px;
+}
+.button-primary {
+    border-radius: 10px;
+    /* line-height: initial; */
+    padding: 10px 25px;
+    display: block;
+    text-align: center;
+    text-decoration: none !important;
+    color: #fff !important;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    background-color: rgb(242, 88, 36);
+}
+.button-primary:hover {
+    box-shadow: inset 0 2px 2px 0 rgba(255,255,255,0.22), 0 233px 233px 0 rgba(255,255,255,0.12) inset;
+    transform: translateY(-10px);
+}
+.center-sec-inverse{
+    color: black;
+}
+section.sell-packages {
+    background: #f8f8f8;
+}
+section.sell-packages p {
+    font-size: 18px;
+}
+center {
+    width: 100%;
+}
+.row.sect-accord {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+section.faqs .col-md-12.button-div a {
+    width: 60%;
+    margin-top: 20px;
+}
+section.faqs {
+    margin: 40px 0px;
+}
+
+
+/* listing section */
+
+
+.booking-item {
+    width: 100%;
+    border: 20px solid #0e0c50;
+}
+img.img-top-listing {
+    margin:  auto;
+    padding: 20px;
+    display: block;
+}
+img.img-middle-listing {
+    width: 100%;
+    height: 600px;
+    display: block;
+    margin:  auto;
+    object-fit: cover;
+}
+.item-bottom-row p {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.item-bottom-row {
+    background: #0e0c50;
+    padding-top: 20px;
+}
+p.today-value span.today-price {
+    font-size: 30px;
+    font-weight: 500;
+    color: #ff9a02;
+    position: relative;
+    top: 5px;
+}
+p.retail-value {
+    font-size: 16px;
+    color: #ff9a02;
+}
+p.retail-value span.original-price {
+    text-decoration: line-through;
+}
+p.retail-value {
+    font-size: 16px;
+    color: #ff9a02;
+}
+p.today-value {
+    font-size: 16px;
+}
+button.booking-button:hover {
+    box-shadow: inset 0 2px 2px 0 rgba(255,255,255,0.22), 0 233px 233px 0 rgba(255,255,255,0.12) inset;   
+}
+button.booking-button {
+    padding: 10px 25px;
+    width: 100%;
+    font-size: 30px;
+    margin: 10px 0px;
+    background: #ff9a02;
+    border: 0px;
+    color: white;
+    border-radius: 10px;
+}
+.container.description-star-sec {
+    margin-top: 50px;
+}
+.row.title-row p {
+    margin: 0px;
+    font-size: 26px;
+}
+p.today-only-timer {
+    color: #ff9a02;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+
+
+/* date box */
+
+
+.date-box-item {
+    width: 100%;
+    padding: 20px;
+}
+.row.date-box-row {
+    border: 2px solid #0e0c50;
+}
+section.date-box-sec p {
+    font-size: 20px;
+    margin: 0px;
+    text-align: center;
+}
+.col-md-12.button-date-box {
+    background: #ff9a02;
+    padding: 15px 25px;
+    margin: 10px 0px;
+}
+.video-container.container {
+    padding: 0px;
+}
+.video-container.container iframe {
+    width: 100%;
+    height: 500px;
+}
+
+
+/* image gallery */
+
+
+.gallery-image-box img {
+    width: 100%;
+    margin: 10px 0px;
+}
+section.gallery-sec p.title-hotel {
+    font-size: 26px;
+}
+
+
+
+/* flash sale box */
+
+
+
+.flash-sale-box-item {
+    width: 100%;
+    text-align: center;
+    border: 15px solid #ff9504;
+}
+button.flash-sale-btn {
+    border-radius: 0px;
+    margin-bottom: 0px;
+    background: #0e0c50;
+    color: #fd9b04;
+}
+
+
+/* why stay at hotel gallery */
+
+ul.check-o.text-center {
+    width: 60%;
+    margin: auto;
+}
+.facsility-sec {
+    width: 100%;
+}
+p.title-fascility {
+    color: #ff9504;
+    font-weight: 700;
+}
+p.title-hotel {
+    width: 100%;
+}
+.row.why-stay-row {
+    padding: 20px;
+    background: #f3f3f3;
+}
+ul.fascility-list {
+    list-style: none;
+    padding: 0px;
+    font-size: 20px;
+}
+.reservation-box-fascility {
+    width: 100%;
+    background: #ff9504;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+.reservation-box-fascility p.retail-value {
+    color: #0e0c50;
+    margin: 0px;
+}
+.reservation-box-fascility p.today-value {
+    color: #0e0c50;
+    font-size: 30px;
+    font-weight: 500;
+}
+.reservation-box-fascility p.today-value span.today-price {
+    color: #0e0c50;
+    top: 0;
+}
+
+
+
+/* modals */
+
+
+
+.date-select-modal .modal-header {
+    padding: 5px 10px;
+    border: 0px;
+}
+.date-select-modal .modal-body {
+    text-align: center;
+        text-transform: uppercase;
+}
+.date-select-modal .modal-body .date-select-mod {
+    background: #f8f9fa;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.col-md-12.date-select-mod.blue a.button.button-date-mod {
+    background: #080629;
+    width: 100%;
+    display: block;
+    color: white;
+    padding: 10px;
+}
+
+a.button.button-date-mod {
+    background: #ff9a02;
+    width: 100%;
+    display: block;
+    color: white;
+    padding: 10px;
+}
