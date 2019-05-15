@@ -99,29 +99,31 @@ class PackagesController extends Controller
 	}
 
 	public function upload_description_images ($detail) {
-		$document = new \DOMDocument('1.0', 'UTF-8');
-		$internalErrors = libxml_use_internal_errors(true);
-		$document->loadHtml( mb_convert_encoding($detail, 'HTML-ENTITIES', "UTF-8"), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-		// $document->loadHTML($detail);
-		libxml_use_internal_errors($internalErrors);
-		
-	       	$images = $document->getElementsByTagName('img');
+		if (!empty($detail)) {
+			$document = new \DOMDocument('1.0', 'UTF-8');
+			$internalErrors = libxml_use_internal_errors(true);
+			$document->loadHtml( mb_convert_encoding($detail, 'HTML-ENTITIES', "UTF-8"), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+			// $document->loadHTML($detail);
+			libxml_use_internal_errors($internalErrors);
+			
+		       	$images = $document->getElementsByTagName('img');
 
-	       	foreach($images as $k => $img) {
-			$data = $img->getAttribute('src');
-			if (strpos($data, ';') !== false) {
-				list($type, $data) = explode(';', $data);
-				list(, $data)      = explode(',', $data);
-			}
-			$data = base64_decode($data);
-			$image_name= "/upload/" . time().$k.'.png';
-			$path = public_path() . $image_name;
-			file_put_contents($path, $data);
-			$img->removeAttribute('src');
-			$img->setAttribute('src', $image_name);
-	       	}
-	       $detail = $document->saveHTML();
-	       return $detail;
+		       	foreach($images as $k => $img) {
+				$data = $img->getAttribute('src');
+				if (strpos($data, ';') !== false) {
+					list($type, $data) = explode(';', $data);
+					list(, $data)      = explode(',', $data);
+				}
+				$data = base64_decode($data);
+				$image_name= "/upload/" . time().$k.'.png';
+				$path = public_path() . $image_name;
+				file_put_contents($path, $data);
+				$img->removeAttribute('src');
+				$img->setAttribute('src', $image_name);
+		       	}
+		       $detail = $document->saveHTML();
+			       return $detail;
+		}
 	}
 
 	public function upload_image () {
