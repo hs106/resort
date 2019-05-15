@@ -131,3 +131,19 @@
 .description-section p {
     width: 100%;
 }
+.row.why-stay-row p {
+    width: 100%;
+}
+.text-center {
+    text-align: center!important;
+}
+.align-self-end {
+    -ms-flex-item-align: end!important;
+    align-self: flex-end!important;
+}
+.smtxt {
+    font-size: 9px !important;
+}
+.intl-tel-input {
+    width: 100%;
+}

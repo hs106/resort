@@ -1,5 +1,6 @@
-@include('header')
+@extends('front-master')
 
+@section('content')
 <section class="booking-sec">
 	<div class="container description-star-sec">
 		<div class="row title-row">
@@ -19,14 +20,26 @@
 				</div>
 				<div class="item-bottom-row">
 					<div class="details-box">
-						<p class="hotel-duration">4-Day Family Getaway at the</p>
-						<p class="hotel-name"><b>Exploria Express</b></p>
-						<p class="resort-name">at the <b>Summer Bay Resort</b></p>
-						<p class="tour-detail">Purchase <b>TODAY</b> and Receive a <b>4-Night</b> Complimentary Carnival Cruise</p>
+						@php 
+							echo $package->information;
+						@endphp
 						<p class="retail-value">Retail Value <span class="original-price">${{$package->orignal_price}}</span></p>
 						<p class="today-value">Today's Sale Price <span class="today-price">${{$package->price}}</span> Per Family </p>
 						<button class="booking-button" data-toggle="modal" data-target="#dateModalCenter"><span class="fa fa-calendar-check-o"></span> Get Started</button>
-						<p class="today-only-timer">today only sale ends in <span class="today-sale-timer">timer</span></p>
+						<p class="today-only-timer">today only sale ends in <span class="today-sale-timer">
+							<div class="text-center align-self-end">
+                            	<p class="ltxt hr"></p>
+                            	<p class="smtxt">HOURS</p>
+                        	</div>
+                        	<div class="text-center align-self-end">
+                            	<p class="ltxt min"></p>
+                            	<p class="smtxt">MINUTES</p>
+                        	</div>
+                        	<div class="text-center align-self-end">
+                            	<p class="ltxt sec"></p>
+                            	<p class="smtxt">SECONDS</p>
+                        	</div>
+						</span></p>
 						<p class="extra-text"><b>PER ROOM</b> Price For Entire Stay - Not Per Person, Not Per Night</p>
 					</div>
 				</div>
@@ -40,7 +53,7 @@
 			<div class="date-box-item">
 				<p class="text-date-box">Don't have the dates? don't worry</p>
 				<div class="col-md-12 button-date-box">
-					<a href="#"><p>Click here to get this deal now</p>
+					<a href="javascript:void(0);" data-toggle="modal" data-target="#lockpriceModalCenter"><p>Click here to get this deal now</p>
 						<p>for $99 only.</p>
 					</a>					
 				</div>
@@ -74,25 +87,26 @@
 	</div>
 </section>
 
-<section class="cruise-gallery-sec gallery-sec">
-	<div class="container">
-		<div class="row">
-			<p class="title-hotel">CRUISE SECTION</p>
-			<div class="gallery-image-box">
-				<img src="{{asset('/img/overview-1.jpg')}}">
-				<p class="img-desc">The Exploria Express sits in one of Orlando's most premier resort, the Summer Bay, located in the heart of the greatest family-fun city in the world.</p>
-			</div>
-		</div>
-	</div>
-</section>
 <section class="flash-sale-box-sec">
 	<div class="container">
 		<div class="row flash-sale-box-row">
 			<div class="flash-sale-box-item">
 				<img src="{{  asset('/img/flash-sale-small.jpg') }}" class="img-top-listing">
-				<p class="text-date-box">SALE ENDS IN:</p>
+				<p class="today-only-timer">SALE ENDS IN: <span class="today-sale-timer">
+					<div class="text-center align-self-end">
+                    	<p class="ltxt hr"></p>
+                    	<p class="smtxt">HOURS</p>
+                	</div>
+                	<div class="text-center align-self-end">
+                    	<p class="ltxt min"></p>
+                    	<p class="smtxt">MINUTES</p>
+                	</div>
+                	<div class="text-center align-self-end">
+                    	<p class="ltxt sec"></p>
+                    	<p class="smtxt">SECONDS</p>
+                	</div>
+				</span></p>
 				<div class="col-md-12 button-flash-sale-box">
-					<p>COUNTER</p>				
 				</div>
 				<button class="booking-button flash-sale-btn" data-toggle="modal" data-target="#dateModalCenter"><span class="fa fa-calendar-check-o"></span> Get Started</button>
 			</div>
@@ -102,33 +116,9 @@
 <section class="why-stay-sec gallery-sec">
 	<div class="container">
 		<div class="row why-stay-row">
-			<p class="title-hotel">WHY STAY AT <span>HOTEL NAME</span></p>
-			<div class="gallery-image-box">
-				<img src="{{asset('/img/overview-1.jpg')}}">
-				<p class="img-desc">The Exploria Express sits in one of Orlando's most premier resort, the Summer Bay, located in the heart of the greatest family-fun city in the world.</p>
-			</div>
-			<ul class="check-o text-center">
-				<li><p><b>+10 Theme Parks</b> from the Resort with <b>Easy and Convenient Shuttles</b></p></li>
-				<li><p><b>World-Class Accomodation</b> to Impress Your Family</p></li>
-				<li><p><b>Receive Complimentary 4-Night Cruise</b> for 2 Adults</p></li>
-			</ul>
-			<p class="title-hotel"><span>HOTEL DETAILS</span></p>
-			<div class="gallery-image-box">
-				<img src="{{asset('/img/overview-1.jpg')}}">
-				<p class="img-desc">The Exploria Express sits in one of Orlando's most premier resort, the Summer Bay, located in the heart of the greatest family-fun city in the world.</p>
-			</div>
-			<p class="title-hotel"><span>ACOMMODATIONS AND AMENETIES</span></p>
-			<div class="facsility-sec">
-				<p class="title-fascility"><span>ACOMMODATIONS AND AMENETIES</span></p>
-				<ul class="fascility-list">
-					<li class="fascility-item">asdasdqwc</li>
-					<li class="fascility-item">cac ascdas</li>
-					<li class="fascility-item">dqasdqwd</li>
-					<li class="fascility-item">asdddqcfv</li>
-					<li class="fascility-item">vasdvsva</li>
-					<li class="fascility-item">vasdqrvrtt</li>
-				</ul>
-			</div>
+			@php
+				echo $package->hotel_details;
+			@endphp
 			<div class="reservation-box-fascility">
 				<p class="retail-value">Retail Value <span class="original-price">${{$package->orignal_price}}</span></p>
 				<p class="today-value">Today's Sale Price <span class="today-price">${{$package->price}}</span> Per Family </p>
@@ -189,26 +179,28 @@
 				<div class="col-md-12 date-select-mod">
 					<p class="date-select-title">FILL UP THIS FORM TO START YOUR RESERVATION</p>
 					<p class="date-select-desc">Primary Traveler</p>
-					<form>
+					<form id="lock_in_booking_form" method="post" action="{{url('/')}}">
+						<input type="hidden" name="package" value="{{$package->id}}">
+						@csrf
 						<div class="form-group">
 							<label for="fullname">Full Name</label>
-							<input type="text" class="form-control" id="fullname1" aria-describedby="emailHelp" placeholder="Enter Name">
-						</div>
-						<div class="form-group">
-							<label for="email">Email</label>
-							<input type="email" class="form-control" id="email1" placeholder="Enter Email">
-							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							<input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter Name">
 						</div>
 						<div class="form-group">
 							<label for="phone">Phone</label>
-							<input type="tel" class="form-control" id="phone" placeholder="Password">
+							<input type="tel" class="form-control" id="phone"  name="phone" placeholder="Phone">
 							<small id="emailHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
 						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+						</div>
 						<div class="form-check">
-							<input type="checkbox" class="form-check-input" id="exampleCheck1">
+							<input type="checkbox" class="form-check-input" id="agree" name="agree">
 							<label class="form-check-label" for="exampleCheck1"> I have read and agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></label>
 						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-primary booking-submit">Submit</button>
 					</form>
 				</div>
 			</div>
@@ -218,6 +210,93 @@
 		</div>
 	</div>
 </div>
+@endsection
 
+@section('scripts')
+@php
+	$time = $package->sales_end_time;
+	$cur_time = date('Y-m-d H:i:s', strtotime('+5 hours'));
+if (strtotime($time) > strtotime($cur_time)) { 
+@endphp
+<script>
+    jQuery(document).ready(function ($) {
+        var countdown = moment.tz('{{$package->sales_end_time}}', "America/New_York")
+        jQuery('.hr').countdown(countdown.toDate(), function(event) {
+          jQuery(this).html(event.strftime('%H'));
+        });
+        jQuery('.min').countdown(countdown.toDate(), function(event) {
+          jQuery(this).html(event.strftime('%M'));
+        });
+        jQuery('.sec').countdown(countdown.toDate(), function(event) {
+          jQuery(this).html(event.strftime('%S'));
+        });
+    });
+</script>
+@php
+}
+@endphp
 
-@include('footer')
+<script>
+
+$(document).ready(function() {
+
+	var input = document.querySelector("#phone");
+	window.intlTelInput(input);
+
+	$.validator.addMethod('validatePhone', function(value, element) {
+	  //return this.optional(element) || /^((\d+(\\.\d{0,2})?)|((\d*(\.\d{1,2}))))$/.test(value);
+	  	if ($("#phone").intlTelInput('isValidNumber')){
+	      	return true;
+	   	} else{
+	       return false;
+	   	}
+	}, "Please enter a valid phone.");
+
+    $("#lock_in_booking_form").validate({
+   		rules: {
+	     	 fullname: {
+	        	required: true,
+	        	maxlength: 255
+	      	},
+	        email: {
+	        	required: true,
+	        	email: true,
+	        },
+	        phone: {
+	        		required: true,
+	        		/*validatePhone: true,*/
+	        },
+	        agree: {
+	        		required: true,
+	        },
+    	},
+    	submitHandler: function(form) {
+      		$('.booking-submit').text('Sending..');
+      		$('.booking-submit').addClass('btn-progress');
+      		$('.booking-submit').addClass('disabled');
+      		var formData = new FormData($("#lock_in_booking_form")[0]);
+      		$.ajax({
+        		url: '{{ route("save-booking") }}' ,
+        		type: "POST",
+         		contentType: false,
+   	 		processData: false,
+        		dataType: "json",
+        		data: formData,
+        		async: false,
+        
+        		success: function( response ) {
+        			$('.booking-submit').text('Publish');
+        			$('.booking-submit').removeClass('btn-progress');
+        			$('.booking-submit').removeClass('disabled');
+            		if (response.status == true) {
+            			window.location.href = {{url('/checkout')}};
+            		}
+        		}
+      		});
+
+    	}
+  	});
+});
+</script>
+@endsection
+

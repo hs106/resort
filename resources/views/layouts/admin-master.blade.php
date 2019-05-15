@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{ asset('css/select.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
+  <link href="{{ asset('/css/intlTelInput.min.css') }}" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 </head>
 
@@ -61,6 +62,8 @@
   <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('js/dataTables.select.min.js') }}"></script>
   <script src="{{ asset('assets/js/stisla.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('/js/utils.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('/js/intlTelInput.min.js') }}"></script>
   <script src="{{ asset('assets/js/scripts.js') }}"></script>
   <script src="{{ asset('assets/js/custom.js') }}"></script>
   @yield('scripts')

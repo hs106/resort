@@ -1,5 +1,6 @@
-@include('header')
+@extends('front-master')
 
+@section('content')
 <section class="section-holiday">
     <div class="holiday-box">
         <div class="holiday-box-overlay"></div>
@@ -217,5 +218,4 @@
 </div>
 </div>
 </section>
-
-@include('footer')
+@endsection
