@@ -12,7 +12,5 @@ class HomeController extends Controller
     function listing(){
     	return view('single-listing');
     }
-    function booking(){
-    	return view('booking');
-    }
+  
 }

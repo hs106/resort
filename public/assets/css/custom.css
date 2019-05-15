@@ -18,3 +18,6 @@ section.detail-pkg {
     max-width: 1000px !important;
 }
 }
+.modal-backdrop {
+	display: none;
+}

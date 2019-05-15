@@ -2,7 +2,7 @@
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/single-listing', 'HomeController@listing');
-Route::get('/booking', 'HomeController@booking');
+
 Route::get('/dynamic.js', function () {
     return view('admin.js.dynamic'); 
 });
