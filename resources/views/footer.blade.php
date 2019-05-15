@@ -6,7 +6,7 @@
                 </div>      
             </div>
       	</footer>
-
+     
         <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
     </body>
 </html>

@@ -17,7 +17,10 @@
     <link href="{{ asset('/css/styles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css">
     
-    
+    <!-- <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"> -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"/>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"/>
+<script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"/> -->
 </head>
 <body>
     <!-- Header -->
