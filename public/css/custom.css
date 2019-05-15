@@ -275,7 +275,7 @@ ul.fascility-list {
 }
 .date-select-modal .modal-body {
     text-align: center;
-        text-transform: uppercase;
+    text-transform: uppercase;
 }
 .date-select-modal .modal-body .date-select-mod {
     background: #f8f9fa;
@@ -302,4 +302,54 @@ div#dateModalCenter .modal-content {
 }
 div#lockpriceModalCenter .modal-content {
     background: #080629;
+}
+
+
+
+
+/* booking page */
+
+
+section.booking-sec .row {
+    margin: 40px 0;
+}
+
+.dates-section.col-md-12 input {
+    width: 100%;
+    margin: 10px auto;
+
+    display: block;
+}
+h3.main-title {
+    color: #fe8a20;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    border-bottom: 5px solid #fe8920;
+}
+.form-check {
+
+    margin: auto;
+}
+h4.mini-title {
+    width: 100%;
+    margin-bottom: 20px;
+    color: #fe8920;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 2px solid #fe8920;
+}
+button.button-primary.button.button-booking {
+    border: 1px;
+    width: 100%;
+    /* display: block; */
+    float: left;
+    margin: 20px 0px;
+}
+form.col-md-6.offset-md-3 {
+    /* border: 1px solid #fe8820; */
+    margin: 80px auto;
+    border-radius: 10px;
+    box-shadow: 0 17px 43px rgba(141, 173, 186, 0.56);
 }
