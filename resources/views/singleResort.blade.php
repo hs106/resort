@@ -213,7 +213,7 @@
 							<input type="checkbox" class="form-check-input" id="agree" name="agree">
 							<label class="form-check-label" for="exampleCheck1"> I have read and agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></label>
 						</div>
-						<button type="submit" class="btn btn-primary booking-submit">Submit</button>
+						<button type="submit" class="button button-date-mod booking-button">Reserve It Now</button>
 					</form>
 				</div>
 			</div>
