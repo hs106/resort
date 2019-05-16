@@ -353,3 +353,25 @@ form.col-md-6.offset-md-3 {
     border-radius: 10px;
     box-shadow: 0 17px 43px rgba(141, 173, 186, 0.56);
 }
+
+
+/* checkout */
+
+
+.description-side-inner {
+    float: left;
+}
+.price-side-inner {
+    float: right;
+}
+p.checkout-timer {
+    padding: 20px;
+    background: #d2a10da3;
+    width: 100%;
+    border-radius: 5px;
+    margin: 20px 0px;
+}
+.description-side-inner {
+    float: left;
+    width: 100%;
+}
