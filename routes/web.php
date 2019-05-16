@@ -4,7 +4,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('resort/{slug}', 'HomeController@resotPreview');
 Route::get('booking', 'HomeController@booking')->name('booking');
 Route::post('save-booking', 'BookingController@saveBooking')->name('save-booking');
-Route::post('checkout', 'BookingController@checkout')->name('checkout');
+Route::get('checkout', 'BookingController@checkout')->name('checkout');
 Route::get('/dynamic.js', function () {
     return view('admin.js.dynamic'); 
 });

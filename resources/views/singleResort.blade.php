@@ -26,7 +26,7 @@
 						<p class="retail-value">Retail Value <span class="original-price">${{$package->orignal_price}}</span></p>
 						<p class="today-value">Today's Sale Price <span class="today-price">${{$package->price}}</span> Per Family </p>
 						<button class="booking-button" data-toggle="modal" data-target="#dateModalCenter"><span class="fa fa-calendar-check-o"></span> Get Started</button>
-						<p class="today-only-timer">today only sale ends in <span class="today-sale-timer">
+						<div class="today-only-timer">today only sale ends in <span class="today-sale-timer">
 							<div class="text-center align-self-end">
                             	<p class="ltxt hr"></p>
                             	<p class="smtxt">HOURS</p>
@@ -39,7 +39,7 @@
                             	<p class="ltxt sec"></p>
                             	<p class="smtxt">SECONDS</p>
                         	</div>
-						</span></p>
+						</span></div>
 						<p class="extra-text"><b>PER ROOM</b> Price For Entire Stay - Not Per Person, Not Per Night</p>
 					</div>
 				</div>
@@ -92,7 +92,7 @@
 		<div class="row flash-sale-box-row">
 			<div class="flash-sale-box-item">
 				<img src="{{  asset('/img/flash-sale-small.jpg') }}" class="img-top-listing">
-				<p class="today-only-timer">SALE ENDS IN: <span class="today-sale-timer">
+				<div class="today-only-timer">SALE ENDS IN: <span class="today-sale-timer">
 					<div class="text-center align-self-end">
                     	<p class="ltxt hr"></p>
                     	<p class="smtxt">HOURS</p>
@@ -105,7 +105,7 @@
                     	<p class="ltxt sec"></p>
                     	<p class="smtxt">SECONDS</p>
                 	</div>
-				</span></p>
+				</span></div>
 				<div class="col-md-12 button-flash-sale-box">
 				</div>
 				<button class="booking-button flash-sale-btn" data-toggle="modal" data-target="#dateModalCenter"><span class="fa fa-calendar-check-o"></span> Get Started</button>
@@ -181,6 +181,7 @@
 					<p class="date-select-desc">Primary Traveler</p>
 					<form id="lock_in_booking_form" method="post" action="{{url('/')}}">
 						<input type="hidden" name="package" value="{{$package->id}}">
+						<input type="hidden" name="guest" value="1">
 						@csrf
 						<div class="form-group">
 							<label for="fullname">Full Name</label>
@@ -188,7 +189,7 @@
 						</div>
 						<div class="form-group">
 							<label for="phone">Phone</label>
-							<input type="tel" class="form-control" id="phone"  name="phone" placeholder="Phone">
+							<input type="tel" class="form-control" id="phone"  name="phone">
 							<small id="emailHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
 						</div>
 						<div class="form-group">
@@ -289,7 +290,7 @@ $(document).ready(function() {
         			$('.booking-submit').removeClass('btn-progress');
         			$('.booking-submit').removeClass('disabled');
             		if (response.status == true) {
-            			window.location.href = {{url('/checkout')}};
+            			window.location.href = '{{url('/checkout')}}';
             		}
         		}
       		});
