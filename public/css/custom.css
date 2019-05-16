@@ -1,3 +1,163 @@
+.header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #0E0C50;
+}
+.footer{
+    background-color: #F3F3F3;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 12px;
+    color: #4a4a4a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+.button-primary {
+    transition: 0.5s;
+}
+.holiday-box {
+    background-image: url('../img/dion-tavenier.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 100px;
+    padding-top: 25px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+.holiday-box-overlay {
+    background-color: rgba(34, 34, 34, 0.71);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 0;
+}
+.holiday-box h2 {
+    font-size: 66px;
+    line-height: 83px;
+    font-weight: 700;
+    padding: 0 70px;
+}
+.s-head {
+    font-size: 34px;
+}
+.section-package {
+    padding-top: 20px;
+    outline: none;
+    background-color: rgb(242, 242, 242);
+}
+.package-box {
+    position: relative;
+    top: -100px;
+}
+.single-package img {
+    width: 100%;
+    height: auto;
+}
+.single-package {
+    background: #fff;
+    padding: 25px 25px 7px;
+}
+.single-package h3 {
+    margin: 20px 0 15px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2f2f2f;
+}
+.single-package figure img {
+    height: 250px;
+}
+.pack_price {
+    height: 150px;
+}
+.pack_desc {
+    font-size: 18px;
+    line-height: 23px;
+    padding-bottom: 50px;
+    height: 100px;
+    overflow: hidden;
+}
+.pack_price p {
+    color: rgba(47, 47, 47, 0.5);
+    font-size: 18px;
+}
+.pack_price h2 {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+.pack_btn a {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    background-color: rgb(242, 88, 36);
+    font-size: 22px;
+    padding: 10px 25px;
+}
+.pack_terms {
+    padding: 15px 0;
+}
+.pack_terms p {
+    color: rgba(47, 47, 47, 0.5);
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 0;
+}
+.section-gateway {
+    padding-top: 20px;
+    outline: none;
+    background-color: rgb(90, 175, 214);
+    color: #fff;
+}
+.gateway-detail-box h2 {
+    font-size: 55px;
+    line-height: 70px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+.gateway-image-box img {
+    width: 100%;
+    height: auto;
+}
+.gateway-detail-link {
+    padding: 10px 25px;
+    display: block;
+    text-align: center;
+    text-decoration: none !important;
+    color: #fff !important;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    background-color: rgb(242, 88, 36);
+    font-size: 28px;
+}
+.link-sub {
+    font-size: 14px;
+    display: block;
+}
+.login-brand img {
+    width: 200px;
+}
+.description-section p {
+    width: 100%;
+}
+.row.why-stay-row p {
+    width: 100%;
+}
+.text-center {
+    text-align: center!important;
+}
+.align-self-end {
+    -ms-flex-item-align: end!important;
+    align-self: flex-end!important;
+}
+.smtxt {
+    font-size: 9px !important;
+}
+.intl-tel-input {
+    width: 100%;
+}
 p{
     font-size: 20px;
 }
@@ -53,6 +213,20 @@ section.section-gateway .fa {
     box-shadow: inset 0 2px 2px 0 rgba(255,255,255,0.22), 0 233px 233px 0 rgba(255,255,255,0.12) inset;
     transform: translateY(-10px);
 }
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px !important;
+    margin-left: -15px !important;
+}
+.flash-sale-box-item span.today-sale-timer .text-center.align-self-end p.ltxt {
+    font-size: 40px;
+}
+.flash-sale-box-item span.today-sale-timer .text-center.align-self-end p.smtxt {
+    font-size: 25px !important;
+}
 .center-sec-inverse{
     color: black;
 }
@@ -79,7 +253,30 @@ section.faqs {
 
 
 /* listing section */
-
+.row.title-row p.title {
+    font-weight: 700;
+}
+.today-only-timer {
+    font-size: 20px;
+    color: #ff9a02;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+span.today-sale-timer {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+span.today-sale-timer .text-center.align-self-end {
+    padding: 10px;
+}
+div.today-only-timer {
+    /* width: 100%; */
+    /* margin: auto; */
+    /* display: block; */
+    text-align: center;
+}
 
 .booking-item {
     width: 100%;
@@ -268,19 +465,33 @@ ul.fascility-list {
 /* modals */
 
 
-
 .date-select-modal .modal-header {
-    padding: 5px 10px;
+    padding: 15px 15px;
     border: 0px;
+    border-radius: 5px;
+    /* color: red; */
+}
+.modal-header button.close {
+    color: red;
+}
+div#lockpriceModalCenter .modal-dialog.modal-dialog-centered {
+    width: 100% !important;
+    max-width: 30%;
+}
+
+div#dateModalCenter p.date-select-title {
+    color: #ff9a02;
+    font-weight: bold;
 }
 .date-select-modal .modal-body {
     text-align: center;
     text-transform: uppercase;
 }
 .date-select-modal .modal-body .date-select-mod {
-    background: #f8f9fa;
-    padding: 10px;
+ background: #f8f9fa;
+    padding: 20px;
     margin-bottom: 10px;
+    border-radius: 5px;
 }
 .col-md-12.date-select-mod.blue a.button.button-date-mod {
     background: #080629;
@@ -296,20 +507,40 @@ a.button.button-date-mod {
     display: block;
     color: white;
     padding: 10px;
+    border-radius: 5px;
 }
-div#dateModalCenter .modal-content {
+/*div#dateModalCenter .modal-content {
     background: #ff9a02;
 }
 div#lockpriceModalCenter .modal-content {
     background: #080629;
+}*/
+.modal-content {
+     background: url(http://localhost:8000/img/dion-tavenier.jpg);
+    background-size: cover;
 }
 
 
 
-
 /* booking page */
+label.form-check-label a {
+    color: #fe8820;
+    text-decoration: underline;
+}
+.fv-plugins-message-container {
+    color: #ffffff;
+    background: #fe8820;
+    
+    border-radius: 5px;
+}
+.fv-plugins-message-container div{
 
-
+padding: 10px;
+}
+.caleran-input {
+    width: 100% !important;
+    margin: 20px auto !important;
+}
 section.booking-sec .row {
     margin: 40px 0;
 }
@@ -354,7 +585,9 @@ form.col-md-6.offset-md-3 {
     box-shadow: 0 17px 43px rgba(141, 173, 186, 0.56);
 }
 
-
+form#reserveForm button.button-primary.button.button-booking {
+    font-size: 20px;
+}
 /* checkout */
 
 
