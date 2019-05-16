@@ -52,6 +52,34 @@ Edit Booking
 		 		          </div>
 		 		        </div>
 		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Reservation Date</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <input type="text" class="form-control" name="reservation_date" id="reservation_date" value="{{$booking->reservation_date}}">
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Adults</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <select class="form-control" name="adults" id="adults">
+		 		            	<option value="">Choose...</option>
+		 		            	@php for($i = 1; $i < 7; $i++) { @endphp
+		 		            		<option value="{{$i}}" @php echo ($i == $booking->adults) ? 'selected' : ''; @endphp>{{$i}}</option>
+		 		            	@php } @endphp
+		 		            </select>
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Children</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <select class="form-control" name="children" id="children">
+		 		            	<option value="">Choose...</option>
+		 		            	@php for($i = 1; $i < 7; $i++) { @endphp
+		 		            		<option value="{{$i}}" @php echo ($i == $booking->children) ? 'selected' : ''; @endphp>{{$i}}</option>
+		 		            	@php } @endphp
+		 		            </select>
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
 		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
 		 		          <div class="col-sm-12 col-md-7">
 		 		            <select class="form-control" name="status" id="status">
