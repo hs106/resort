@@ -16,16 +16,16 @@ class CreatePackagesTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title', 255);
-            $table->string('sub_title', 255)->nullable();
-            $table->string('slug')->unique();
-            $table->string('featured_image')->nullable();
-            $table->string('location', 255)->nullable();
-            $table->decimal('orignal_price', 10, 2)->nullable();
-            $table->decimal('price', 10, 2)->nullable();
-            $table->string('percent_off')->nullable();
-            $table->dateTime('sales_end_time')->nullable();
-            $table->text('video_embed_code')->nullable();
-            $table->text('description')->nullable();
+            $table->text('sub_title');
+            $table->string('slug');
+            $table->string('featured_image');
+            $table->string('location', 255);
+            $table->decimal('orignal_price', 10, 2);
+            $table->decimal('price', 10, 2);
+            $table->string('percent_off');
+            $table->dateTime('sales_end_time');
+            $table->text('video_embed_code');
+            $table->text('description');
             $table->timestamps();
         });
     }

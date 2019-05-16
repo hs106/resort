@@ -9,6 +9,7 @@
 
 section.detail-pkg h5 {
     font-weight: normal;
+    font-size: 16px;
 }
 section.detail-pkg {
     margin-top: 30px;
@@ -21,3 +22,13 @@ section.detail-pkg {
 .modal-backdrop {
 	display: none;
 }
+.intl-tel-input {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.align-right {
+    position: absolute;
+    right: 20px;
+}
+

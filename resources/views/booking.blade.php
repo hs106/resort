@@ -1,4 +1,8 @@
-@include('header')
+@extends('front-master')
+
+
+
+@section('content')
 
 <section class="booking-sec">
 	<div class="container">
@@ -83,6 +87,10 @@
 			</form>
 		</div>
 	</section>
+<<<<<<< HEAD
 
 
 	@include('footer')
+=======
+@endsection
+>>>>>>> 4c54b8bdee6f4a9df5e3dbcd0e3577871adc91c4

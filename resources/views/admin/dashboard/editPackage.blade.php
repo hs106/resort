@@ -8,6 +8,9 @@ Edit Packages
 <section class="section">
 	 <div class="section-header">
     		<h1>Edit Packages</h1>
+    		<button type="button" class="btn btn-primary btn-icon icon-left align-right" onclick="location.href='{{ url('admin/packages') }}';">
+    		        <i class="fas fa-arrow-left"></i> Back
+    		</button>
   	</div>
  	<div class="section-body">
  		<div class="row">
@@ -47,6 +50,12 @@ Edit Packages
 		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Title</label>
 		 		          <div class="col-sm-12 col-md-7">
 		 		            <input type="text" class="form-control" name="sub_title" id="sub_title" value="{{$package->sub_title}}">
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Information</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		          	<textarea name="information" id="information" class="summernote-simple">{{$package->information}}</textarea>
 		 		          </div>
 		 		        </div>
 		 		        <div class="form-group row mb-4">
@@ -102,6 +111,12 @@ Edit Packages
 		 		          </div>
 		 		        </div>
 		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Hotel Details</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <textarea class="summernote" name="hotel_details">{{$package->hotel_details}}</textarea>
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
 		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
 		 		          <div class="col-sm-12 col-md-7">
 		 		            <button class="btn btn-primary publish-btn">Update</button>
@@ -151,6 +166,10 @@ $(document).ready(function() {
 	        	required: true,
 	        	decimal: true,
 	        	maxlength:10,
+	        },
+	        percent_off: {
+	        	digits: true,
+	        	maxlength:3,
 	        },
     	},
     	submitHandler: function(form) {
