@@ -34,6 +34,114 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4">
+				<h5>Reservation Date</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{ ($booking->reservation_date) ?  $booking->reservation_date : 'Not Selected'}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Adults</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->adults}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Children</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->children}}</p>
+			</div>
+		</div>
+		@php 
+		if ($booking->payment_status == 1) { 
+		@endphp
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Payment Status</h5>
+			</div>
+			<div class="col-md-8">
+				@php $statuses = array ('Pending', 'Done'); 
+				$label = array ('primary', 'success'); @endphp
+				@foreach($statuses as $key => $value)
+				        @if ($booking->payment_status == $key) 
+				                <p class="badge badge-{{$label[$key]}}">{{$value}}</p>
+				        @endif
+				@endforeach
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Authenticaton code</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->auth_code}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Transaction Id</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->transaction_id}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Account Type</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->account_type}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Address</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->address}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>City</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->city}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>State</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->state}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Country</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->country}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Zip Code</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->zip_code}}</p>
+			</div>
+		</div>
+		@php
+		}
+		@endphp
+		<div class="row">
+			<div class="col-md-4">
 				<h5>Status</h5>
 			</div>
 			<div class="col-md-8">
@@ -41,7 +149,7 @@
 				$label = array ('primary', 'secondary', 'success'); @endphp
 				@foreach($statuses as $key => $value)
 				        @if ($booking->status == $key) 
-				                <span class="badge badge-{{$label[$key]}}">{{$value}}</span>
+				                <p class="badge badge-{{$label[$key]}}">{{$value}}</p>
 				        @endif
 				@endforeach
 			</div>

@@ -7,6 +7,8 @@ Route::get('booking/{slug?}', 'BookingController@booking')->name('booking');
 Route::post('booking', 'BookingController@guestBooking')->name('guest-booking');
 Route::post('save-booking', 'BookingController@saveBooking')->name('save-booking');
 Route::get('checkout', 'BookingController@checkout')->name('checkout');
+Route::post('complete-reservation', 'BookingController@completeReservation')->name('complete-reservation');
+
 Route::get('available_dates', ['as' => 'available-dates', 'uses' => 'BookingController@availableDates'])->name('available_dates');
 Route::get('/dynamic.js', function () {
     return view('admin.js.dynamic'); 

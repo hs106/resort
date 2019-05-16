@@ -375,3 +375,8 @@ p.checkout-timer {
     float: left;
     width: 100%;
 }
+span.original-price {
+    text-decoration: line-through;
+    color: #ff0000;
+    font-size: 14px;
+}

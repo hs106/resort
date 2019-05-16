@@ -26,6 +26,11 @@
 						<p class="retail-value">Retail Value <span class="original-price">${{$package->orignal_price}}</span></p>
 						<p class="today-value">Today's Sale Price <span class="today-price">${{$package->price}}</span> Per Family </p>
 						<button class="booking-button" data-toggle="modal" data-target="#dateModalCenter"><span class="fa fa-calendar-check-o"></span> Get Started</button>
+						@php
+							$time = $package->sales_end_time;
+							$cur_time = date('Y-m-d H:i:s', strtotime('+5 hours'));
+						if (strtotime($time) > strtotime($cur_time)) { 
+						@endphp
 						<div class="today-only-timer">today only sale ends in <span class="today-sale-timer">
 							<div class="text-center align-self-end">
                             	<p class="ltxt hr"></p>
@@ -40,6 +45,7 @@
                             	<p class="smtxt">SECONDS</p>
                         	</div>
 						</span></div>
+						@php } @endphp
 						<p class="extra-text"><b>PER ROOM</b> Price For Entire Stay - Not Per Person, Not Per Night</p>
 					</div>
 				</div>
@@ -92,6 +98,11 @@
 		<div class="row flash-sale-box-row">
 			<div class="flash-sale-box-item">
 				<img src="{{  asset('/img/flash-sale-small.jpg') }}" class="img-top-listing">
+				@php
+					$time = $package->sales_end_time;
+					$cur_time = date('Y-m-d H:i:s', strtotime('+5 hours'));
+				if (strtotime($time) > strtotime($cur_time)) { 
+				@endphp
 				<div class="today-only-timer">SALE ENDS IN: <span class="today-sale-timer">
 					<div class="text-center align-self-end">
                     	<p class="ltxt hr"></p>
@@ -106,6 +117,7 @@
                     	<p class="smtxt">SECONDS</p>
                 	</div>
 				</span></div>
+				@php } @endphp
 				<div class="col-md-12 button-flash-sale-box">
 				</div>
 				<button class="booking-button flash-sale-btn" data-toggle="modal" data-target="#dateModalCenter"><span class="fa fa-calendar-check-o"></span> Get Started</button>
@@ -179,7 +191,7 @@
 				<div class="col-md-12 date-select-mod">
 					<p class="date-select-title">FILL UP THIS FORM TO START YOUR RESERVATION</p>
 					<p class="date-select-desc">Primary Traveler</p>
-					<form id="lock_in_booking_form" method="post" action="{{url('/')}}">
+					<form id="reserveForm" method="post" action="{{url('/booking')}}">
 						<input type="hidden" name="package" value="{{$package->id}}">
 						<input type="hidden" name="guest" value="1">
 						@csrf
@@ -237,7 +249,7 @@ if (strtotime($time) > strtotime($cur_time)) {
 }
 @endphp
 
-<script>
+<!-- <script>
 
 $(document).ready(function() {
 
@@ -298,6 +310,164 @@ $(document).ready(function() {
     	}
   	});
 });
+</script> -->
+
+<script>
+        $(document).ready(function () {
+                hideCalendar();
+                $('#have-dates').change(function () {
+                        if( $('#have-dates').prop('checked') ) {
+                            $('.caleran-inline').hide();
+                        }else{
+                            $('.caleran-inline').show();
+                        }
+                });
+        });
+                function hideCalendar(){
+                     if( $('#have-dates').prop('checked') ) {
+                         $('.caleran-inline').hide();
+                     }else{
+                         $('.caleran-inline').show();
+                     }
+                 }
+                 // At this moment we only want the start days, we do some trick to make
+                 // the other days green even if they are disabled
+                 var next_available_date = moment();
+                 var caleranConfig = {
+                     inline: true,
+                     showHeader: false,
+                     showFooter: false,
+                     disabledRanges: [{
+                         start: next_available_date.clone().subtract(365, 'days'),
+                         end:   next_available_date.clone().subtract(1, 'day')
+                     }
+                     ],
+                     disableDays: function(day) {
+                         if( document.availableDates.find(  function (date) { return day.format("YYYY-MM-DD") === date; } )) {
+                             return false;
+                         }
+
+                         return true;
+                     },
+
+                     onfirstselect: function(caleran, startDate) {
+                         var minAndMaxDate = startDate.clone(); // .add(4-1, 'days');
+                         caleran.setEnd(minAndMaxDate);
+                         caleran.globals.endSelected = true;
+                         caleran.globals.startSelected = false;
+                         caleran.updateInput();
+
+                     },
+                     onafterselect: function(caleran, startDate, endDate){
+                         caleran.config.maxDate = null;
+                         caleran.updateInput();
+                         isFirstSelect = false;
+                     },
+
+                     ondraw: function(caleran) {
+                         if(caleran.config.startDate){
+                             var start = caleran.config.startDate.clone();
+                             for(i=0; i<4; i++){
+                                 var time = start.clone().add(i, 'days').middleOfDay().unix();
+                                 el = $('.caleran-days-container').find("[data-value='" + time + "']");
+                                 el.addClass('caleran2-trick-selected');
+                             }
+                         }
+                     },
+
+                     onaftermonthchange: function(caleran, month) {
+                         $.get('/available_dates', {sku: "RD3NORCC", months: month.month()+1, year: month.year() } )
+                          .then(function (data) {  document.availableDates = data.availableDates; return caleran;} )
+                          .then(function(c) { c.reDrawCalendars(); });
+                     }
+                 };
+
+                 caleranConfig.startDate =  next_available_date.clone();
+                 caleranConfig.endDate = next_available_date.clone().add(4-1, 'days');
+                 caleranConfig.minDate = next_available_date.clone();
+                 var _calendar;
+                 $.get('/available_dates', {sku: "RD3NORCC", months: (new Date().getMonth()+1), year: moment().year() } )
+                  .then(function (data) {
+                      document.availableDates = data.availableDates;
+                      _calendar = $("#calendar1").caleran(caleranConfig);
+
+                      $('#booking').fadeIn("slow");
+                      $('#booking').removeClass('d-none');
+                      $('#checking-availability').fadeOut();
+                  });
+
+
+                 var inputPhone = document.querySelector("#phone");
+                 document.iti = window.intlTelInput(inputPhone, {
+                     utilsScript: "/shared/js/utils.js",
+                     initialCountry: "auto",
+                     preferredCountries: ['US', 'CA'],
+                     geoIpLookup: function(callback) {
+                         $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                             var countryCode = (resp && resp.country) ? resp.country : "US";
+                             callback(countryCode);
+                         });
+                     }
+                 });
+
+                 document.addEventListener('DOMContentLoaded', function () {
+                     _form = FormValidation.formValidation(
+                         document.getElementById('reserveForm'),
+                         {
+                             fields: {
+                                 fullname: {
+                                     validators: {
+                                         notEmpty: {
+                                             message: 'Full name can\'t be blank'
+                                         },
+                                         callback: {
+                                             callback: function(input){
+                                                 if(!input.value.trim()){ return false; }
+                                                 return input.value.trim().split(' ').length > 1;
+                                             },
+                                             message: 'Full name is required'
+                                         }
+                                     }
+                                 },
+                                 phone: {
+                                     validators: {
+                                         notEmpty: {
+                                         },
+                                         callback: {
+                                             message: 'Valid phone number is required',
+                                             callback: function(input){
+                                                 return document.iti.isValidNumber();
+                                             }
+                                         }
+                                     },
+                                 },
+
+                                 email: {
+                                     validators: {
+                                         notEmpty: {
+                                         },
+
+                                         emailAddress: { }
+                                     }
+                                 },
+                                 terms: {
+                                     validators: { notEmpty: { message: 'You must read and agree to Terms and Conditions and Privacy Policy'  } }
+                                 }
+                             },
+                             plugins: {
+                                 bootstrap: new FormValidation.plugins.Bootstrap(),
+                                 trigger: new FormValidation.plugins.Trigger({event: 'blur'}),
+                                 submitButton: new FormValidation.plugins.SubmitButton(),
+                                 defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+                                 icon: new FormValidation.plugins.Icon({
+                                     valid: 'fa fa-check',
+                                     invalid: 'fa fa-times',
+                                     validating: 'fa fa-refresh'
+                                 }),
+                             },
+                         });
+                 });
+
 </script>
 @endsection
 
