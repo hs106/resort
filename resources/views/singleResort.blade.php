@@ -150,7 +150,7 @@
 					<p class="date-select-title">Yes i have travel dates</p>
 					<p class="date-select-desc">check availabilty And</p>
 					<p class="discount-date-select-mod">save up to {{$package->percent_off}}%</p>
-					<a href="{{route('booking')}}" class="button button-date-mod booking-button"><span class="fa fa-calendar-check-o"></span> SELECT DATES</a>
+					<a href="{{url('/booking/'.$package->slug)}}" class="button button-date-mod booking-button"><span class="fa fa-calendar-check-o"></span> SELECT DATES</a>
 				</div>
 				<div class="col-md-12 date-select-mod blue">
 					<p class="date-select-title">no i don't have travel dates</p>

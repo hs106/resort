@@ -2,9 +2,12 @@
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('resort/{slug}', 'HomeController@resotPreview');
-Route::get('booking', 'HomeController@booking')->name('booking');
+
+Route::get('booking/{slug?}', 'BookingController@booking')->name('booking');
+Route::post('booking', 'BookingController@guestBooking')->name('guest-booking');
 Route::post('save-booking', 'BookingController@saveBooking')->name('save-booking');
 Route::get('checkout', 'BookingController@checkout')->name('checkout');
+Route::get('available_dates', ['as' => 'available-dates', 'uses' => 'BookingController@availableDates'])->name('available_dates');
 Route::get('/dynamic.js', function () {
     return view('admin.js.dynamic'); 
 });

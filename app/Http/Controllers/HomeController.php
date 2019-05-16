@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Packages;
+use App\Bookings;
 use DateTime;
 
 class HomeController extends Controller
@@ -15,9 +16,5 @@ class HomeController extends Controller
     	function resotPreview($slug){
     		$package = Packages::where('slug', $slug)->firstOrFail();
     		return view('singleResort')->with('package', $package);
-    	}
-    	function booking(){
-    		// echo 'Select Your Preferred Travel Dates';
-    		return view('booking');
     	}
 }
