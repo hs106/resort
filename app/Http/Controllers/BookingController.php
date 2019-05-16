@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Cookie;
 use Illuminate\Http\Request;
 use App\Packages;
 use App\Bookings;
@@ -40,10 +40,13 @@ class BookingController extends Controller
 		$booking->save();
 		if($booking->id && isset($data['booking'])){ 
 			$arr = array('msg' => 'Reservation has been updated successfully!', 'status' => true);
-		} else if ($booking->id) {
-			Cookie::queue(Cookie::make('booking_id', $booking->id, 10));
+		} else if ($booking->id && isset($data['guest'])) {
+			$enc_book_id = encrypt($booking->id);
+			Cookie::queue(Cookie::make('booking', $enc_book_id, 10));
 			$arr = array('msg' => 'Reservation has been added successfully!', 'status' => true);
-		}else {
+		} else if ($booking->id) {
+			$arr = array('msg' => 'Reservation has been added successfully!', 'status' => true);
+		} else {
 			$arr = array('msg' => 'Something goes to wrong. Please try again later!', 'status' => false);
 		}
 		return Response()->json($arr);
@@ -65,5 +68,9 @@ class BookingController extends Controller
 		$view = view('admin.dashboard.showBooking')->with('booking', $get_booking)->render();
 		$arr = array('msg' => 'Successfully loaded booking.', 'view' => $view);
  		return Response()->json($arr);
+	}
+
+	public function checkout () {
+		
 	}
 }
