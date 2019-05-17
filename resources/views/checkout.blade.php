@@ -37,7 +37,7 @@
 			<input type="hidden" name="transaction_total_cost" value="{{$booking->package->price}}">
 			<input type="hidden" name="fullname" value="{{$booking->fullname}}">
 			@csrf
-			<div class="row">
+			<div class="row checkout-form-row">
 				<h3 class="main-title">Billing information</h3>
 				<h4 class="resort warning"> This resort is in high demand. No worries, we have reserved your vacation request for 10 minutes.</h4>
 				<!-- <p class="checkout-timer"></p> -->
@@ -50,8 +50,8 @@
                             	<p class="ltxt sec"></p>
                             	<p class="smtxt">SECONDS</p>
                         	</div>
-						</span></div>
-				
+						</span>
+			
 
 				<div class="container">
 
@@ -105,10 +105,6 @@
 						<label for="credit_card_cvv">CVV</label>
 						<input type="text" class="form-control" id="credit_card_cvv" name="credit_card_cvv" placeholder="----">
 					</div>
-				</div>
-				
-				<div class="container">
-					<div class="row">
 					<div class="col-md-6 Expiration-month">
 						<div class="form-group">
 							<label for="Expiration-month">Expiration Month</label>
@@ -159,8 +155,9 @@
 							</select>
 						</div>
 					</div>
-					</div>
 				</div>
+				
+					
 					<!-- 
 					<div class="form-check">
 						<input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -170,7 +167,7 @@
 				<div class="col-md-12">
 					<button type="submit" class="button-primary button button-booking">Complete Reservation</button>
 				</div>
-
+			</div>
 
 
 			</form>

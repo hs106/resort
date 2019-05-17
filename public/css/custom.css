@@ -613,3 +613,54 @@ span.original-price {
     color: #ff0000;
     font-size: 14px;
 }
+.row.checkout-desc-row {
+    box-shadow: 0 17px 43px rgba(141, 173, 186, 0.56);
+    padding: 10px;
+    /* width: 100%; */
+    margin: 40px 0px;
+}
+.description-side-inner h4 {
+    /* color: #f25824; */
+    border-bottom: 3px solid #fe8820;
+    padding: 10px 0px;
+}
+.price-side-inner {
+    width: 100%;
+    text-align: end;
+}
+.price-side-inner h4 {
+    padding: 10px 0px;
+    border-bottom: 3px solid #fe8720;
+}
+section.booking-sec .checkout-form-row {
+    margin: 40px auto;
+    /* width: 100%; */
+    box-shadow: 0 17px 43px rgba(141, 173, 186, 0.56);
+    padding: 30px;
+}
+h4.resort.warning {
+    text-align: center;
+}
+.col-md-6.Expiration-month, .col-md-6.country-select {
+    float: left;
+}
+.row.checkout-form-row span.today-sale-timer {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.row.checkout-form-row span.today-sale-timer .text-center.align-self-end p.ltxt {
+    font-size: 40px;
+    background: #f25824;
+    color: white;
+    padding: 10px;
+    margin-bottom: 2px;
+}
+.row.checkout-form-row span.today-sale-timer .text-center.align-self-end p.smtxt {
+    font-size: 25px !important;
+    background: #f25824;
+    color: white;
+    padding: 10px;
+}
