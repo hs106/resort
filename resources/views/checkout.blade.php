@@ -1,13 +1,13 @@
 @extends('front-master')
 
 @section('content')
-<?php if (isset($msg)) { ?>
-	<div class="alert alert-danger" role="alert">
-        We're sorry! There seems to be an issue making your reservation! Please call us at <a href="tel:+11-855-370-3898">1-855-370-3898</a>
-    </div>
-<?php } ?>
-<section class="booking-sec">
+<section class="booking-sec checkout-sec">
 	<div class="container">
+		@if($errors->any())
+			<div class="alert alert-danger" role="alert">
+		        {{$errors->first()}}! Please call us at <a href="tel:+11-855-370-3898">1-855-370-3898</a>
+		    </div>
+		@endif
 		<div class="checkout-description col-md-10 offset-md-1">
 			<div class="row checkout-desc-row">
 				<div class="col-md-8 description-side">
@@ -74,7 +74,7 @@
 					</div>
 					<div class="col-md-12 state-select">
 						<div class="form-group">
-							<label for="exampleFormControlSelect1">Country</label>
+							<label for="state">State</label>
 							<select class="form-control" id="state" name="state">
 								<option value="">Choose your state</option>
 								<option value="Alberta">Alberta</option>
@@ -108,7 +108,7 @@
 					<div class="col-md-6 Expiration-month">
 						<div class="form-group">
 							<label for="Expiration-month">Expiration Month</label>
-							<select class="form-control" id="card_expiry_month" name="card_expiry_month">
+							<select class="form-control" id="credit_card_month" name="credit_card_month">
 								<option>Chooose...</option>
 								<option>1</option>
 								<option>2</option>
@@ -128,7 +128,7 @@
 					<div class="col-md-6 country-select">
 						<div class="form-group">
 							<label for="Expiration-year">Expiration-Year</label>
-							<select class="form-control" id="card_expiry_year" name="card_expiry_year">
+							<select class="form-control" id="credit_card_year" name="credit_card_year">
 								<option value="" selected="">Choose...</option>
                                 <option value="2019">2019</option>
                                 <option value="2020">2020</option>

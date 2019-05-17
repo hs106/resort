@@ -75,6 +75,30 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4">
+				<h5>Credit Card Number</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->credit_card_number}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Credit Card CVV</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->credit_card_cvv}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h5>Credit Card Expiry</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$booking->credit_card_month.'/'.$booking->credit_card_year}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
 				<h5>Authenticaton code</h5>
 			</div>
 			<div class="col-md-8">

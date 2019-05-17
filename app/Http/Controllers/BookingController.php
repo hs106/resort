@@ -7,6 +7,7 @@ use App\Packages;
 use App\Bookings;
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
+use Redirect;
 
 class BookingController extends Controller
 {
@@ -107,19 +108,21 @@ class BookingController extends Controller
 				$booking->account_type = $tresponse->getAccountType();
 			} else {
 				// echo "Charge Credit Card ERROR :  Invalid response\n";
-				return back()->with('msg', 'Invalid Credit Card! Please try another.');
+				return Redirect::back()->withErrors(['We\'re sorry! There seems to be an issue making your reservation']);
 			}
 		} else {
-			return back()->with('msg', 'Invalid Credit Card! Please try another.');
+			return Redirect::back()->withErrors(['We\'re sorry! There seems to be an issue making your reservation']);
+			// return back()->with('msg', 'Invalid Credit Card! Please try another.');
 		}
 		$booking->address = $data['address'];
 		$booking->city = $data['city'];
 		$booking->country = $data['country'];
+		$booking->state = $data['state'];
 		$booking->zip_code = $data['zip_code'];
-		/*$booking->credit_number = $data['credit_card_number'];
-		$booking->cvv = $data['credit_card_cvv'];
-		$booking->exp_month = $data['credit_card_month'];
-		$booking->exp_year = $data['credit_card_year'];*/
+		$booking->credit_card_number = $data['credit_card_number'];
+		$booking->credit_card_cvv = $data['credit_card_cvv'];
+		$booking->credit_card_month = $data['credit_card_month'];
+		$booking->credit_card_year = $data['credit_card_year'];
 		$booking->save();
 		// if ($booking->id) {
 		return redirect('/thankyou');
@@ -174,7 +177,7 @@ class BookingController extends Controller
 		// Create the payment data for a credit card
 		          $creditCard = new AnetAPI\CreditCardType();
 		          $creditCard->setCardNumber($request->credit_card_number);
-		          $expiry = $request->card_expiry_year . '-' . $request->card_expiry_month;
+		          $expiry = $request->credit_card_year . '-' . $request->credit_card_month;
 		          // dd($expiry);
 		          // $creditCard->setExpirationDate( "2038-12");
 		          $creditCard->setExpirationDate($expiry);

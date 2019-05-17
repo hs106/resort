@@ -3,7 +3,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('resort/{slug}', 'HomeController@resotPreview');
 
-Route::get('booking/{slug?}', 'BookingController@booking')->name('booking');
+Route::get('booking/{slug}', 'BookingController@booking')->name('booking');
 Route::post('booking', 'BookingController@guestBooking')->name('guest-booking');
 Route::post('save-booking', 'BookingController@saveBooking')->name('save-booking');
 Route::get('checkout', 'BookingController@checkout')->name('checkout');
