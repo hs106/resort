@@ -11,8 +11,8 @@ use Redirect;
 
 class BookingController extends Controller
 {
-	public function index () {
-		$get_bookings = Bookings::all()->where('delete', 0);
+	public function index () {		
+		$get_bookings = Bookings::all()->where('delete', 0)->sortByDesc('id');
 		return view('admin.dashboard.bookings')->with('bookings', $get_bookings);
 	}
 
@@ -47,6 +47,14 @@ class BookingController extends Controller
 		$booking->phone = $data['phone'];
 		$booking->email = $data['email'];
 		$booking->package_id = $data['package'];
+		$booking->reservation_date = $data['reservation_date'];
+		$booking->adults = $data['adults'];
+		$booking->children = $data['children'];
+		$booking->address = $data['address'];
+		$booking->city = $data['city'];
+		$booking->country = $data['country'];
+		$booking->state = $data['state'];
+		$booking->zip_code = $data['zip_code'];
 		if (isset($data['status'])) {
 			$booking->status = $data['status'];
 		}
@@ -124,6 +132,16 @@ class BookingController extends Controller
 		$booking->credit_card_month = $data['credit_card_month'];
 		$booking->credit_card_year = $data['credit_card_year'];
 		$booking->save();
+
+		$get_booking = Bookings::find($data['booking']);
+		$beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+		$beautymail->send('emails.booking_email', ['booking' => $get_booking], function($message, $email)  {
+		        $email = 'hs106.work@gmail.com';
+		        $message
+		            ->from('admin@resortdaddy.com')
+		            ->to($email, 'Resort Daddy')
+		            ->subject('Booking Details | Resort Daddy');
+		});
 		// if ($booking->id) {
 		return redirect('/thankyou');
 		// }
@@ -133,8 +151,11 @@ class BookingController extends Controller
 	public function guestBooking (Request $request) {
 		$data = $request->all();
 		$booking = new Bookings;
-		if (isset($data['hide_dates']) && $data['hide_dates'] == true) {
-			$booking->reservation_date = $data['reservation_date'];
+		if (!isset($data['hide_dates']) && isset($data['reservation_date'])) {
+			$start_end = (explode("-",$data['reservation_date']));
+			$start = $start_end[0];
+			$end = date('m/d/Y',strtotime('+3 days',strtotime($start)));
+			$booking->reservation_date = $start.' - '.$end;
 		}
 		if (isset($data['adults'] )) { $booking->adults = $data['adults']; }
 		if (isset($data['children'] )) { $booking->children = $data['children']; }
@@ -148,7 +169,7 @@ class BookingController extends Controller
 			$booking->status = $data['status'];
 		}
 		$booking->save();
-		if($booking->id) { 
+		if($booking->id) {
 			$enc_book_id = encrypt($booking->id);
 			Cookie::queue(Cookie::make('booking', $enc_book_id, 10));
 			return redirect ('/checkout');
@@ -160,10 +181,25 @@ class BookingController extends Controller
 
 	public function availableDates () {
 		$availableDates = array();
-		for ($i=0; $i < 28; $i++) { 
-			$y = $i+1;
-			$availableDates[$i] = '2019-06-'.$y;
-		}
+		$month = $_GET['months'];
+		$year = $_GET['year'];
+
+		if ($month) {
+			for($d=1; $d<=31; $d++)
+			{
+			    $time=mktime(12, 0, 0, $month, $d, $year);          
+			    if (date('m', $time)==$month)       
+			        $availableDates[]=date('Y-m-d', $time);
+			}
+			$month++;
+			for($d=1; $d<=31; $d++)
+			{
+			    $time=mktime(12, 0, 0, $month, $d, $year);          
+			    if (date('m', $time)==$month)       
+			        $availableDates[]=date('Y-m-d', $time);
+			}
+		} 
+
 		$arr = array('availableDates' => $availableDates);
  		return Response()->json($arr);
 	}

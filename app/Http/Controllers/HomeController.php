@@ -10,7 +10,7 @@ use DateTime;
 class HomeController extends Controller
 {
 	function index () {
-    		$get_packages = Packages::all()->where('status', 1);
+    		$get_packages = Packages::all()->where('status', 1)->sortByDesc("id");
         	return view('index')->with('packages', $get_packages);;    
     	}
     	function resotPreview($slug){

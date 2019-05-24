@@ -56,9 +56,6 @@
 				<p>{{$booking->children}}</p>
 			</div>
 		</div>
-		@php 
-		if ($booking->payment_status == 1) { 
-		@endphp
 		<div class="row">
 			<div class="col-md-4">
 				<h5>Payment Status</h5>
@@ -73,6 +70,9 @@
 				@endforeach
 			</div>
 		</div>
+		@php 
+		if ($booking->payment_status == 1) { 
+		@endphp
 		<div class="row">
 			<div class="col-md-4">
 				<h5>Credit Card Number</h5>

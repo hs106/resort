@@ -8,6 +8,7 @@
 				<p class="title">{{$package->title}}</p>
 				<p class="location">{{$package->location}}</p>
 				<!-- <p class="rating">*****</p> -->
+				<div class="my-rating"></div>
 			</div>
 		</div>
 		<div class="row booking-row">
@@ -228,12 +229,13 @@
 @section('scripts')
 @php
 	$time = $package->sales_end_time;
+	$time = date('Y-m-d H:i',strtotime('-5 hour',strtotime($time)));
 	$cur_time = date('Y-m-d H:i:s', strtotime('+5 hours'));
-if (strtotime($time) > strtotime($cur_time)) { 
+	if (strtotime($time) > strtotime($cur_time)) { 
 @endphp
 <script>
     jQuery(document).ready(function ($) {
-        var countdown = moment.tz('{{$package->sales_end_time}}', "America/New_York")
+        var countdown = moment.tz('{{$time}}', "America/New_York")
         jQuery('.hr').countdown(countdown.toDate(), function(event) {
           jQuery(this).html(event.strftime('%H'));
         });
@@ -321,6 +323,11 @@ $(document).ready(function() {
                         }else{
                             $('.caleran-inline').show();
                         }
+                });
+                $(".my-rating").starRating({
+                    initialRating: {{$package->rating_stars}},
+                    starSize: 20,
+                    readOnly: true
                 });
         });
                 function hideCalendar(){

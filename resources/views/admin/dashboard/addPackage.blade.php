@@ -20,7 +20,7 @@ Add Package
  		        <h4>Package Details</h4>
  		      </div>
  		      <div class="card-body">
-	 		      	<form id="package-form" method="post" action="{{ route('admin.add-packages') }}">
+	 		      	<form id="package-form" method="post" action="{{ route('admin.add-package') }}">
 		 		      	<div class="form-group row mb-4">
 		 		      	  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Featured Image</label>
 		 		      	  <div class="col-sm-12 col-md-7">
@@ -57,6 +57,12 @@ Add Package
 		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Location</label>
 		 		          <div class="col-sm-12 col-md-7">
 		 		            <input type="text" class="form-control" name="location" id="location">
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Rating</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <input type="number" min="0" max="5" class="form-control" name="rating_stars" id="rating_stars">
 		 		          </div>
 		 		        </div>
 		 		        <div class="form-group row mb-4">

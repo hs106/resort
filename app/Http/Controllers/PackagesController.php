@@ -12,7 +12,7 @@ class PackagesController extends Controller
 		return view('admin.dashboard.package')->with('packages', $get_packages);
 	}
 
-	public function addPackages () {
+	public function addPackage () {
 		return view('admin.dashboard.addPackage');
 	}
 	public function savePackage (Request $request) {
@@ -64,6 +64,7 @@ class PackagesController extends Controller
 			$package->featured_image = $data['featured_image'];
 		}
 		$package->location = $data['location'];
+		$package->rating_stars = $data['rating_stars'];
 		$package->orignal_price = $data['orignal_price'];
 		$package->price = $data['price'];
 		$package->percent_off = $data['percent_off'];
@@ -87,6 +88,7 @@ class PackagesController extends Controller
 			$package->featured_image = $data['featured_image'];
 		}
 		$package->location = $data['location'];
+		$package->rating_stars = $data['rating_stars'];
 		$package->orignal_price = $data['orignal_price'];
 		$package->price = $data['price'];
 		$package->percent_off = $data['percent_off'];

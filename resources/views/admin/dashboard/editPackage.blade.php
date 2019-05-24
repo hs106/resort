@@ -20,7 +20,7 @@ Edit Packages
  		        <h4>Package Details</h4>
  		      </div>
  		      <div class="card-body">
-	 		      	<form id="package-form" method="post" action="{{ route('admin.add-packages') }}">
+	 		      	<form id="package-form" method="post" action="{{ url('admin.edit-package/'.$package->id) }}">
 	 		      		<input type="hidden" name="id" value="{{$package->id}}">
 	 		      		<input type="hidden" name="edited" id="edited" value="">
 		 		      	<div class="form-group row mb-4">
@@ -62,6 +62,12 @@ Edit Packages
 		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Location</label>
 		 		          <div class="col-sm-12 col-md-7">
 		 		            <input type="text" class="form-control" name="location" id="location" value="{{$package->location}}">
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Rating</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <input type="number" min="0" max="5" class="form-control" name="rating_stars" id="rating_stars" value="{{$package->rating_stars}}">
 		 		          </div>
 		 		        </div>
 		 		        <div class="form-group row mb-4">

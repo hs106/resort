@@ -33,6 +33,14 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4">
+				<h5>Rating</h5>
+			</div>
+			<div class="col-md-8">
+				<p>{{$package->rating_stars}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
 				<h5>Orignal Price</h5>
 			</div>
 			<div class="col-md-8">

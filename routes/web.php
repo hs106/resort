@@ -26,7 +26,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
     Route::get('dashboard', 'DashboardController')->name('dashboard');
     /*Packages*/
     Route::get('packages', 'PackagesController@index')->name('packages');
-    Route::get('add-packages', 'PackagesController@addPackages')->name('add-packages');
+    Route::get('add-package', 'PackagesController@addPackage')->name('add-package');
     Route::post('save-package', 'PackagesController@savePackage')->name('save-package');
     Route::post('delete-package', 'PackagesController@deletePackage')->name('delete-package');
     Route::get('edit-package/{id}', 'PackagesController@editPackage')->name('edit-package');

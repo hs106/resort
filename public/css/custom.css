@@ -613,3 +613,10 @@ span.original-price {
     color: #ff0000;
     font-size: 14px;
 }
+.caleran2-trick-selected {
+    background: #0665cd;
+    color: #fff !important;
+}
+.package-rating img {
+    width: 20px;
+}

@@ -20,7 +20,7 @@ Add Booking
  		        <h4>Booking Details</h4>
  		      </div>
  		      <div class="card-body">
-	 		      	<form id="booking-form" method="post" action="{{ route('admin.add-packages') }}">
+	 		      	<form id="booking-form" method="post" action="{{ route('admin.add-booking') }}">
 		 		        <div class="form-group row mb-4">
 		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Full Name</label>
 		 		          <div class="col-sm-12 col-md-7">
@@ -48,6 +48,75 @@ Add Booking
 		 		            		<option value="{{$row->id}}">{{$row->title}}</option>
 		 		            	@endforeach
 		 		            </select>
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Reservation Date</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <input type="text" class="form-control datetimepicker" name="reservation_date" id="reservation_date">
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Adults</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <select class="form-control" name="adults" id="adults">
+		 		            	<option value="">Choose...</option>
+		 		            	@php for($i = 1; $i < 7; $i++) { @endphp
+		 		            		<option value="{{$i}}">{{$i}}</option>
+		 		            	@php } @endphp
+		 		            </select>
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Children</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <select class="form-control" name="children" id="children">
+		 		            	<option value="">Choose...</option>
+		 		            	@php for($i = 1; $i < 7; $i++) { @endphp
+		 		            		<option value="{{$i}}">{{$i}}</option>
+		 		            	@php } @endphp
+		 		            </select>
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Address</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">City</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <input type="text" class="form-control" id="city" name="city" placeholder="City">
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">State</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <select class="form-control" id="state" name="state">
+								<option value="">Choose your state</option>
+								@php $state = array('Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan', 'Northwest Territories', 'Nunavut', 'Yukon'); 
+								foreach($state as $key => $value) { @endphp
+								<option value="<?php echo $value ?>"><?php echo $value ?></option>
+								@php } @endphp 
+							</select>
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Country</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <select class="form-control" id="country" name="country">
+		 		            	@php $countries = array('USA', 'CANADA'); 
+		 		            	foreach($countries as $key => $value) { @endphp
+		 		            	<option value="<?php echo $value ?>"><?php echo $value ?></option>
+		 		            	@php } @endphp 
+		 		            </select>
+		 		          </div>
+		 		        </div>
+		 		        <div class="form-group row mb-4">
+		 		          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Zip Code</label>
+		 		          <div class="col-sm-12 col-md-7">
+		 		            <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Zip Code">
 		 		          </div>
 		 		        </div>
 		 		        <div class="form-group row mb-4">

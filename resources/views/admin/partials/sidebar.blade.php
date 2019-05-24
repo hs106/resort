@@ -12,18 +12,18 @@
       <li class="menu-header">Users</li>
       <li class="{{ Request::route()->getName() == 'admin.users' ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.users') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
      @endif -->
-        <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Packages</span></a>
+        <li class="nav-item dropdown {{ Request::route()->getName() == 'admin.packages' ? ' active' : '' }} {{ Request::route()->getName() == 'admin.add-package' ? ' active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-box-open"></i><span>Packages</span></a>
                 <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="{{ route('admin.add-packages') }}">Add New</a></li>
-                        <li class="active"><a class="nav-link" href="{{ route('admin.packages') }}">View All</a></li>
+                        <li class="{{ Request::route()->getName() == 'admin.add-package' ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.add-package') }}">Add New</a></li>
+                        <li class="{{ Request::route()->getName() == 'admin.packages' ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.packages') }}">View All</a></li>
                 </ul>
         </li>
-        <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Bookings</span></a>
+        <li class="nav-item dropdown {{ Request::route()->getName() == 'admin.bookings' ? ' active' : '' }} {{ Request::route()->getName() == 'admin.add-booking' ? ' active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="far fa-calendar-check"></i><span>Bookings</span></a>
                 <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="{{ route('admin.add-booking') }}">Add New</a></li>
-                        <li class="active"><a class="nav-link" href="{{ route('admin.bookings') }}">View All</a></li>
+                        <li class="{{ Request::route()->getName() == 'admin.add-booking' ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.add-booking') }}">Add New</a></li>
+                        <li class="{{ Request::route()->getName() == 'admin.bookings' ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.bookings') }}">View All</a></li>
                 </ul>
         </li>
 

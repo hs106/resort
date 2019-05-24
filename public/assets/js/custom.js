@@ -19,5 +19,12 @@ $(function(){
         timePicker24Hour: true,
       });
     }
-    $('#packages-table').DataTable();
+    if($("#reservation_date").length) {
+      $('#reservation_date').daterangepicker({
+        locale: {format: 'MM/DD/YYYY'},
+      });
+    }
+    $('#packages-table').DataTable({
+        order: [[0, 'desc']]
+    });
 });

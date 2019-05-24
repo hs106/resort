@@ -97,37 +97,6 @@
                             $('.caleran-inline').show();
                         }
                 });
-
-                /*$('reserveForm').submit(function (e) {
-                        e.preventDefault();
-                         $.ajaxSetup({
-                        headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                        });
-                        $('.publish-btn').text('Sending..');
-                        $('.publish-btn').addClass('btn-progress');
-                        $('.publish-btn').addClass('disabled');
-                        var formData = new FormData($("#reserveForm")[0]);
-                        $.ajax({
-                        url: '{{ route("admin.save-booking") }}' ,
-                        type: "POST",
-                        contentType: false,
-                        processData: false,
-                        dataType: "json",
-                        data: formData,
-                        async: false,
-          
-                        success: function( response ) {
-                                if (response.status == true) {
-                                        window.location.href = '{{url('/checkout')}}';
-                                } else {
-                                        alert('Booking is not possibel at moment. Please againg later!');
-                                }
-                        }
-                        });
-
-                });*/
         });
                 function hideCalendar(){
                      if( $('#have-dates').prop('checked') ) {
@@ -146,7 +115,7 @@
                      disabledRanges: [{
                          start: next_available_date.clone().subtract(365, 'days'),
                          end:   next_available_date.clone().subtract(1, 'day')
-                     }
+                     },
                      ],
                      disableDays: function(day) {
                          if( document.availableDates.find(  function (date) { return day.format("YYYY-MM-DD") === date; } )) {

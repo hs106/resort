@@ -8,6 +8,9 @@ Packages
 <section class="section">
   	<div class="section-header">
     		<h1>Packages</h1>
+        <button type="button" class="btn btn-primary btn-icon icon-left align-right" onclick="location.href='{{ url('admin/add-package') }}';">
+                <i class="fas fa-plus"></i> Add Package 
+        </button>
   	</div>
   	<div class="section-body">
   		<div class="row">
@@ -21,6 +24,7 @@ Packages
   		          <table class="table table-striped" id="packages-table">
   		            <thead>
   		              <tr>
+                          <th>ID</th>
   		               	  	<th>Feature Image</th>
   		               		<th>Title</th>
   		               		<th>Location </th>
@@ -32,6 +36,7 @@ Packages
   		            <tbody>
   		            		 @foreach($packages as $row)
   		            			  <tr>
+                              <td>#{{$row->id}}</td>
   		            				    <td><img src="{{ asset('upload/'.$row->featured_image) }}" width="200px"></td>
   		            				    <td>{{$row->title}}</td>
   		            				    <td>{{$row->location}}</td>
