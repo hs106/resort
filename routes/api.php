@@ -13,6 +13,32 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});*/
+
+Route::post('login', 'PassportController@login');
+Route::post('register', 'PassportController@register');
+ 
+Route::middleware('auth:api')->group(function () {
+    Route::get('user', 'PassportController@details');
+    // Route::resource('products', 'ProductController');
+});
+
+Route::group(['middleware' => ['auth:api']], function(){
+	Route::get('/token', 'ApiTokenController@update');
+});
+
+Route::get('/me', function () {
+    return response()->json([
+        'id' => auth()->user()->id,
+        'name' => auth()->user()->name,
+        'email' => auth()->user()->email
+    ]);
+})->middleware(['auth:api']);
+
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::post('hooks', 'RestHooksController@subscribe'); //POST /api/hooks - subscribe
+    Route::delete('hooks/{id}', 'RestHooksController@delete'); //DELETE /api/hooks/:id - delete
+    Route::get('polling/trigger', 'API\RestHooksController@pollForTrigger');
 });

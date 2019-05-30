@@ -1,0 +1,42 @@
+{
+    "name": "laravel-shield/shield",
+    "description": "A laravel middleware to shield against unverified webhooks from 3rd party services.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ashley Clarke",
+            "email": "me@ashleyclarke.me"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "laravel/framework": "^5.5"
+    },
+    "require-dev": {
+        "laravel-shield/testing": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shield\\Shield\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shield\\Shield\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Shield\\Shield\\Providers\\ShieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "platform": {
+            "php": "7.0"
+        }
+    }
+}

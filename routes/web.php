@@ -62,3 +62,5 @@ Route::name('js.')->group(function() {
 Route::get('users/auth', function() {
     return response()->json(['user' => Auth::check() ? Auth::user() : false]);
 });
+
+Route::resource('subscriptions', 'SubscriptionsController');
